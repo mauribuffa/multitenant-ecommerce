@@ -1,5 +1,7 @@
-const HomePage = async () => {
-  return <div></div>;
+import React from "react";
+
+const HomePage = () => {
+  return <div>HomePage</div>;
 };
 
 export default HomePage;
