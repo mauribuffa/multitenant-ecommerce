@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTRPC } from "@/trcp/client";
+import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import {
   CategoriesGetManyOutput,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
-import { TRPCReactProvider } from "@/trcp/client";
+import { TRPCReactProvider } from "@/trpc/client";
 import { Toaster } from "sonner";
 
 const dmSans = DM_Sans({

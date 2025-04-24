@@ -1,12 +1,12 @@
 "use client";
 
-import { useTRPC } from "@/trcp/client";
+import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 
 const HomePage = () => {
-  const trcp = useTRPC();
+  const trpc = useTRPC();
 
-  const { data } = useQuery(trcp.auth.session.queryOptions());
+  const { data } = useQuery(trpc.auth.session.queryOptions());
 
   return <div>{JSON.stringify(data?.user, null, 2)}</div>;
 };

@@ -1,4 +1,4 @@
-import { getQueryClient, trpc } from "@/trcp/server";
+import { getQueryClient, trpc } from "@/trpc/server";
 
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
