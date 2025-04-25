@@ -9,7 +9,7 @@ import { DEFAULT_LIMIT } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { InboxIcon } from "lucide-react";
 interface Props {
-  category: string;
+  category?: string;
 }
 
 export const ProductList = ({ category }: Props) => {

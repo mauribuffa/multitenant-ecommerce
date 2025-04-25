@@ -4,7 +4,7 @@ import { ProductListSkeleton, ProductList } from "../components/product-list";
 import { ProductSort } from "../components/product-sort";
 
 interface Props {
-  category: string;
+  category?: string;
 }
 
 export const ProductListView = ({ category }: Props) => {

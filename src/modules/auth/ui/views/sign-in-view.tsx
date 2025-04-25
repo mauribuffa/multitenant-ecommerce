@@ -78,7 +78,7 @@ export const SignInView = () => {
                 size="sm"
                 className="text-base border-none underline"
               >
-                <Link href="/sign-in">Sign in</Link>
+                <Link href="/sign-up">Sign up</Link>
               </Button>
             </div>
             <h1 className="text-4xl font-medium">
