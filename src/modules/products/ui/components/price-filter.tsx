@@ -27,6 +27,7 @@ export const formatAsCurrency = (value: string) => {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   }).format(numberValue);
 };
 
