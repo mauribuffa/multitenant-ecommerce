@@ -3,11 +3,10 @@ import { CategoriesGetManyOutputSingle } from "@/modules/categories/types";
 
 interface Props {
   category: CategoriesGetManyOutputSingle;
-  position: { left: number; top: number };
   isOpen: boolean;
 }
 
-export const SubcategoryMenu = ({ category, position, isOpen }: Props) => {
+export const SubcategoryMenu = ({ category, isOpen }: Props) => {
   if (!isOpen || !category.subcategories || category.subcategories.length === 0)
     return null;
 
@@ -15,10 +14,10 @@ export const SubcategoryMenu = ({ category, position, isOpen }: Props) => {
 
   return (
     <div
-      className="fixed z-100"
+      className="absolute z-100"
       style={{
-        top: position.top,
-        left: position.left,
+        top: "100%",
+        left: 0,
       }}
     >
       <div className="h-3 w-60" />
