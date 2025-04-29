@@ -17,6 +17,9 @@ export const productsRouter = createTRPCRouter({
       const product = await ctx.db.findByID({
         collection: "products",
         id: input.id,
+        select: {
+          content: false,
+        },
       });
 
       let isPurchased = false;
@@ -148,6 +151,9 @@ export const productsRouter = createTRPCRouter({
         sort,
         page: input.cursor,
         limit: input.limit,
+        select: {
+          content: false,
+        },
       });
 
       return {

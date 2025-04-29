@@ -12,10 +12,11 @@ import { Categories } from "./collections/Categories";
 import { Media } from "./collections/Media";
 import { Orders } from "./collections/Orders";
 import { Products } from "./collections/Products";
-import { Reviews } from "./collections/reviews";
+import { Reviews } from "./collections/Reviews";
 import { Tags } from "./collections/Tags";
 import { Tenants } from "./collections/Tenants";
 import { Users } from "./collections/Users";
+import { isSuperAdmin } from "./lib/access";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -55,8 +56,7 @@ export default buildConfig({
       tenantsArrayField: {
         includeDefaultField: false,
       },
-      userHasAccessToAllTenants: (user) =>
-        Boolean(user?.roles?.includes("super-admin")),
+      userHasAccessToAllTenants: isSuperAdmin,
     }),
     // storage-adapter-placeholder
   ],

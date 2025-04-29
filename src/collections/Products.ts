@@ -1,9 +1,21 @@
+import { isSuperAdmin } from "@/lib/access";
+import { Tenant } from "@/payload-types";
 import type { CollectionConfig } from "payload";
 
 export const Products: CollectionConfig = {
   slug: "products",
+  access: {
+    create: ({ req }) => {
+      if (isSuperAdmin(req.user)) return true;
+
+      const tenant = req.user?.tenants?.[0]?.tenant as Tenant;
+
+      return Boolean(tenant?.stripeDetailsSubmitted);
+    },
+  },
   admin: {
     useAsTitle: "name",
+    // hidden: ({ user }) => !isSuperAdmin(user),
   },
   fields: [
     {
@@ -52,6 +64,14 @@ export const Products: CollectionConfig = {
         "no-refunds",
       ],
       defaultValue: "30-days",
+    },
+    {
+      name: "content",
+      type: "textarea",
+      admin: {
+        description:
+          "Protected content only visible to customers after purchase. Add product documentation, downlodable files, getting started guides, and bonus materials. Supports Markdown",
+      },
     },
   ],
 };
