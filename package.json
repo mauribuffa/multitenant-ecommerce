@@ -9,7 +9,8 @@
     "lint": "next lint",
     "generate:types": "payload generate:types",
     "db:fresh": "payload migrate:fresh",
-    "db:seed": "bun run src/seed.ts"
+    "db:seed": "bun run src/seed.ts",
+    "stripe:webhook": "stripe listen --forward-to http://localhost:3000/api/stripe/webhooks"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -69,6 +70,7 @@
     "recharts": "^2.15.3",
     "server-only": "^0.0.1",
     "sonner": "^2.0.3",
+    "stripe": "18.0.0",
     "superjson": "^2.2.2",
     "tailwind-merge": "^3.2.0",
     "vaul": "^1.1.2",

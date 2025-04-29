@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     categories: Category;
+    orders: Order;
     products: Product;
     tags: Tag;
     tenants: Tenant;
@@ -86,6 +87,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
     tenants: TenantsSelect<false> | TenantsSelect<true>;
@@ -212,6 +214,19 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: string;
+  name: string;
+  user: string | User;
+  product: string | Product;
+  stripeCheckoutSessionId: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -259,6 +274,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: string | Category;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: string | Order;
       } | null)
     | ({
         relationTo: 'products';
@@ -365,6 +384,18 @@ export interface CategoriesSelect<T extends boolean = true> {
   color?: T;
   parent?: T;
   subcategories?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  name?: T;
+  user?: T;
+  product?: T;
+  stripeCheckoutSessionId?: T;
   updatedAt?: T;
   createdAt?: T;
 }
