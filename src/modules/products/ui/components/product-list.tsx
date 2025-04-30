@@ -30,7 +30,7 @@ export const ProductList = ({ category, tenantSlug, narrowView }: Props) => {
         },
         {
           getNextPageParam: (lastPage) =>
-            lastPage.docs.length > 0 ? lastPage.nextPage : undefined,
+            lastPage.docs?.length > 0 ? lastPage.nextPage : undefined,
         }
       )
     );
