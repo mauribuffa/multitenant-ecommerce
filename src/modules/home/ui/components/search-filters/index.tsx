@@ -7,10 +7,13 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { DEFAULT_BG_COLOR } from "@/modules/home/constants";
 import { BreadcrumbNavigation } from "./breadcrumb-navigation";
+import { useProductFilter } from "@/modules/products/hooks/use-product-filter";
 
 export const SearchFilters = () => {
   const trpc = useTRPC();
   const { data } = useSuspenseQuery(trpc.categories.getMany.queryOptions());
+
+  const [filters, setFilters] = useProductFilter();
 
   const params = useParams();
   const { category, subcategory } = params;
@@ -33,7 +36,10 @@ export const SearchFilters = () => {
         backgroundColor: activeCategoryColor,
       }}
     >
-      <SearchInput />
+      <SearchInput
+        defaultValue={filters.search}
+        onChange={(value) => setFilters({ search: value })}
+      />
       <div className="hidden lg:block">
         <Categories data={data} />
       </div>
@@ -52,7 +58,7 @@ export const SearchFiltersLoading = () => {
       className="px-4 lg:px-12 py-8 border-b flex flex-col gap-4 w-full"
       style={{ backgroundColor: "#F5F5F5" }}
     >
-      <SearchInput disabled />
+      <SearchInput disabled defaultValue="" onChange={() => {}} />
       <div className="hidden lg:block">
         <div className="h-11" />
       </div>
