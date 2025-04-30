@@ -6,7 +6,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const generateTenantUrl = (slug: string) => {
-  return `/tenants/${slug}`;
+  // In development mode, use normal routing
+  if (process.env.NODE_ENV === "development")
+    return `${process.env.NEXT_PUBLIC_APP_URL}/tenants/${slug}`;
+
+  const protocol = "https";
+  const domain = process.env.NEXT_PUBLIC_ROOT_DOMAIN!;
+
+  // In production, use subdomain routing
+  return `${protocol}://${slug}.${domain}`;
 };
 
 export const formatCurrency = (amount: number) => {

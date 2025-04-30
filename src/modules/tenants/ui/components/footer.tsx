@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="max-w-(--breakpoint-xl) mx-auto flex items-center h-full px-4 py-6 lg:px-12 gap-2">
         <p className="text-xl">Powered by</p>
         <Link
-          href="/"
+          href={process.env.NEXT_PUBLIC_APP_URL!}
           className={cn("text-2xl font-semibold", poppins.className)}
         >
           funroad
